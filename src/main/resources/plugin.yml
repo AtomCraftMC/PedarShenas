@@ -1,0 +1,5 @@
+name: PedarShenas
+version: '${project.version}'
+main: ir.alijk.pedarshenas.PedarShenasSpigot
+author: Alijk
+description: PedarShenas finds your Pedar wherever he could be

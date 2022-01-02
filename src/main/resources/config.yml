@@ -1,0 +1,11 @@
+# If it's set to disabled, would just work as an API
+enabled: true
+
+# Main plugin prefix
+prefix: "&4[&cPedarShenas&4] "
+
+# API Key for sending text messages
+ghasedak-api-key: ""
+
+# Ghasedak template name
+ghasedak-template-name: ""

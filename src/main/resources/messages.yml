@@ -1,0 +1,11 @@
+errors:
+  invalid-phone: "&cShomare vared shode, shomare motabar &a&lIRANI &cnist va mored ghabool ma nist."
+  invalid-phone-length: "&cShomare vared shode bishtar ya kamtar az &a&l11 &cragham ast!"
+  duplicate-phone: "&cShomare vared shode ghablan baraye yek hesab karbari sabt shode."
+  verify-cooldown: "&cLotfan baraye verify dobare &4%cooldown% &csanie digar montazer bemanid!"
+  sms-failed: "Moshkeli dar ersal code taeid be shoma pish umade..."
+  database-issue: "Database Error (Lotfan ba modiriat server dar ertebat bashid)"
+  wrong-verification-code: "&cCode vared shode sahih nist! %count%"
+
+sms-sent: "&aCode taeid be shomare shoma ersal shod, Lotfan code taeid ersal shode ra dar chat vared konid:"
+verify-successful: "&aHesabe karbari shoma taeid shod :)"
