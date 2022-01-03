@@ -64,6 +64,8 @@ public final class PedarShenasSpigot extends MegaPlugin {
             register(new PlayerCommand());
             register(new PlayerMove());
             register(new PlayerQuit());
+            register(new PlayerInvincibility());
+            register(new BlockModify());
         }
     }
 
