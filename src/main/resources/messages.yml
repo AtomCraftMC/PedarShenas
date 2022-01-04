@@ -6,6 +6,12 @@ errors:
   sms-failed: "Moshkeli dar ersal code taeid be shoma pish umade..."
   database-issue: "Database Error (Lotfan ba modiriat server dar ertebat bashid)"
   wrong-verification-code: "&cCode vared shode sahih nist! %count%"
-
+  commands:
+    no-permission: "&cShoma dastresi be in dastoor nadarid!"
+    wrong-usage: "&cDastoore vared shode motabar nist..."
+    player-not-found: "&cPlayer morede nazar vojood nadarad ya tabehal vared server nashode!"
+    wrong-discord-id: "&cID Discord vared shode motabar nist!"
+    duplicate-verify-value: "&cMeghdare vared shode baraye verify az ghabl baraye karbar digei estefade shode!"
+    player-verified: "&aPlayer &2%name% &aba estefade az &2%type% &ava meghdare &2%value% &averify shod."
 sms-sent: "&aCode taeid be shomare shoma ersal shod, Lotfan code taeid ersal shode ra dar chat vared konid:"
 verify-successful: "&aHesabe karbari shoma taeid shod :)"

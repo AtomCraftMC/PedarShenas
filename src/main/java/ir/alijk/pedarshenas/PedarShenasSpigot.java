@@ -1,6 +1,7 @@
 package ir.alijk.pedarshenas;
 
 import com.j256.ormlite.dao.Dao;
+import ir.alijk.pedarshenas.commands.VerifyCommand;
 import ir.alijk.pedarshenas.config.Config;
 import ir.alijk.pedarshenas.config.Messages;
 import ir.alijk.pedarshenas.config.Storage;
@@ -24,10 +25,15 @@ public final class PedarShenasSpigot extends MegaPlugin {
 
     @Override
     public void onPluginEnable() {
+        // Registering configurations
         getConfigManager().register(Config.class);
         getConfigManager().register(Storage.class);
         getConfigManager().register(Messages.class);
 
+        // Registering commands
+        register(new VerifyCommand());
+
+        // Setting up prefix
         setPrefix(Common.colorize(Config.PREFIX));
 
         recordManager = new IPRecordManager();

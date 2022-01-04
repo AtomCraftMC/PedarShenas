@@ -1,5 +1,6 @@
 package ir.alijk.pedarshenas.data;
 
+import com.j256.ormlite.dao.Dao;
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 import ir.alijk.pedarshenas.Encryption;
@@ -16,17 +17,17 @@ public class AtomPlayer {
     @DatabaseField(columnName = "id", generatedId = true) @Getter @Setter
     private int id;
 
-    @DatabaseField(canBeNull = false) @Getter @Setter
+    @DatabaseField(canBeNull = false, unique = true) @Getter @Setter
     private String username;
 
-    @DatabaseField(canBeNull = false) @Getter @Setter
+    @DatabaseField(canBeNull = false, unique = true) @Getter @Setter
     private String uuid;
 
     @DatabaseField @Getter @Setter
     private String phone;
 
     @DatabaseField @Getter @Setter
-    private int discordId;
+    private long discordId;
 
     @DatabaseField @Getter @Setter
     private String email;
@@ -51,11 +52,11 @@ public class AtomPlayer {
         this(username, uuid, null, -1, "null", false);
     }
 
-    public AtomPlayer(String username, String uuid, String phone, int discordId, String email, boolean isVerified) {
+    public AtomPlayer(String username, String uuid, String phone, long discordId, String email, boolean isVerified) {
         this(username, uuid, phone, discordId, "null", false, -1);
     }
 
-    public AtomPlayer(String username, String uuid, String phone, int discordId, String email, boolean isVerified, int id) {
+    public AtomPlayer(String username, String uuid, String phone, long discordId, String email, boolean isVerified, int id) {
         this.username = username;
         this.uuid = uuid;
         this.phone = phone;
@@ -67,8 +68,8 @@ public class AtomPlayer {
 
     public void save() throws SQLException {
         // We will hash phone number on saving the player to database if the phone is available
-        if (getPhone() != null) setPhone(Encryption.sha256(getPhone()));
-        PedarShenasSpigot.getAtomPlayersDao().createOrUpdate(this);
+        if (getPhone() != null && getPhone().startsWith("09")) setPhone(Encryption.sha256(getPhone()));
+        Dao.CreateOrUpdateStatus status = PedarShenasSpigot.getAtomPlayersDao().createOrUpdate(this);
     }
 
     public static AtomPlayer findByUsername(String username) throws SQLException{
@@ -77,4 +78,19 @@ public class AtomPlayer {
         return atomPlayers.get(0);
     }
 
+    @Override
+    public String toString() {
+        return "AtomPlayer{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", uuid='" + uuid + '\'' +
+                ", phone='" + phone + '\'' +
+                ", discordId=" + discordId +
+                ", email='" + email + '\'' +
+                ", isVerified=" + isVerified +
+                ", stage=" + stage +
+                ", verificationCode='" + verificationCode + '\'' +
+                ", wrongCodeCounter=" + wrongCodeCounter +
+                '}';
+    }
 }
