@@ -95,7 +95,14 @@ public class PlayerChat implements Listener {
                 Common.send(e.getPlayer(), Messages.VERIFY_SUCCESSFUL);
 
                 // We'll send the user back to auth after the verification so the LoginSender plugin sends him to blobby[1-4]
-                PedarShenasSpigot.getBungeeApi().connect(e.getPlayer(), "auth");
+                // PedarShenasSpigot.getBungeeApi().connect(e.getPlayer(), "auth");
+                Bukkit.getScheduler().runTask(
+                        PedarShenasSpigot.getInstance(),
+                        () -> Bukkit.getServer().dispatchCommand(
+                                Bukkit.getServer().getConsoleSender(),
+                                "forward console lobby " + e.getPlayer().getName()
+                        )
+                );
             } else {
                 String errorMessages = Messages.WRONG_VERIFICATION_CODE_ERROR.replace("%count%", "&4(" + atomPlayer.getWrongCodeCounter() + "/3)");
                 if (atomPlayer.getWrongCodeCounter() < 3) {

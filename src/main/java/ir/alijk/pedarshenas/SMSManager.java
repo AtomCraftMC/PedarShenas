@@ -2,7 +2,6 @@ package ir.alijk.pedarshenas;
 
 import com.squareup.okhttp.*;
 import ir.alijk.pedarshenas.config.Config;
-import org.bukkit.scheduler.BukkitScheduler;
 
 import java.io.IOException;
 import java.util.Random;

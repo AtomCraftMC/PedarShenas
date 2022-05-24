@@ -5,6 +5,7 @@ import ir.alijk.pedarshenas.PlayerStages;
 import ir.alijk.pedarshenas.config.Config;
 import ir.alijk.pedarshenas.data.AtomPlayer;
 import ir.jeykey.megacore.utils.Common;
+import org.bukkit.Bukkit;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
@@ -43,7 +44,13 @@ public class PlayerJoin implements Listener {
 
         // This won't happen if the server is doing normal, so we'll hardcode a lobby to send the user to
         if (atomPlayer.isVerified()) {
-            PedarShenasSpigot.getBungeeApi().connect(e.getPlayer(), "blobby1");
+//            PedarShenasSpigot.getBungeeApi().connect(e.getPlayer(), "blobby1");
+            Bukkit.getScheduler().runTaskLater(
+                    PedarShenasSpigot.getInstance(),
+                    () -> Bukkit.getServer().dispatchCommand(
+                            Bukkit.getServer().getConsoleSender(),
+                            "forward console lobby " + e.getPlayer().getName()),
+                    5L);
         } else {
             atomPlayer.setStage(PlayerStages.PENDING_INPUT_PHONE);
             Common.send(e.getPlayer(), "&aBaraye taeid hesab karbari khodetoon shomare hamrah khodetoon ro dar chat vared konid");
