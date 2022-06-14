@@ -14,33 +14,33 @@ import java.io.IOException;
 import java.sql.SQLException;
 
 public class DataSource {
-        private static ConnectionSource connectionSource;
+    private static ConnectionSource connectionSource;
 
-        public static void SQLite() throws SQLException, IOException, ClassNotFoundException {
-                File file = new File(PedarShenasSpigot.getInstance().getDataFolder(), "data.db");
-                if (!file.exists()) file.createNewFile();
+    public static void SQLite() throws SQLException, IOException, ClassNotFoundException {
+        File file = new File(PedarShenasSpigot.getInstance().getDataFolder(), "data.db");
+        if (!file.exists()) file.createNewFile();
 
-                String databaseUrl = "jdbc:sqlite:" + PedarShenasSpigot.getInstance().getDataFolder() + "/data.db";
+        String databaseUrl = "jdbc:sqlite:" + PedarShenasSpigot.getInstance().getDataFolder() + "/data.db";
 
-                connectionSource = new JdbcConnectionSource(databaseUrl);
+        connectionSource = new JdbcConnectionSource(databaseUrl);
 
-                setupTables();
-        }
+        setupTables();
+    }
 
-        public static void MySQL() throws SQLException {
-                String databaseUrl = "jdbc:mysql://" + Storage.MYSQL_HOST + ":" + Storage.MYSQL_PORT + "/" + Storage.MYSQL_DB + "?useSSL=false&autoReconnect=true";
+    public static void MySQL() throws SQLException {
+        String databaseUrl = "jdbc:mysql://" + Storage.MYSQL_HOST + ":" + Storage.MYSQL_PORT + "/" + Storage.MYSQL_DB + "?useSSL=false&autoReconnect=true";
 
-                connectionSource = new JdbcConnectionSource(databaseUrl, Storage.MYSQL_USERNAME, Storage.MYSQL_PASSWORD);
+        connectionSource = new JdbcConnectionSource(databaseUrl, Storage.MYSQL_USERNAME, Storage.MYSQL_PASSWORD);
 
-                setupTables();
-        }
+        setupTables();
+    }
 
-        public static void setupTables() throws SQLException {
-                PedarShenasSpigot.setAtomPlayersDao((Dao<AtomPlayer, String>) DaoManager.createDao(connectionSource, AtomPlayer.class));
-                TableUtils.createTableIfNotExists(connectionSource, AtomPlayer.class);
-        }
+    public static void setupTables() throws SQLException {
+        PedarShenasSpigot.setAtomPlayersDao(DaoManager.createDao(connectionSource, AtomPlayer.class));
+        TableUtils.createTableIfNotExists(connectionSource, AtomPlayer.class);
+    }
 
-        public static ConnectionSource getConnection() {
-                return connectionSource;
-        }
+    public static ConnectionSource getConnection() {
+        return connectionSource;
+    }
 }

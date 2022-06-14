@@ -5,8 +5,8 @@ import ir.alijk.pedarshenas.commands.VerifyCommand;
 import ir.alijk.pedarshenas.config.Config;
 import ir.alijk.pedarshenas.config.Messages;
 import ir.alijk.pedarshenas.config.Storage;
-import ir.alijk.pedarshenas.database.DataSource;
 import ir.alijk.pedarshenas.data.AtomPlayer;
+import ir.alijk.pedarshenas.database.DataSource;
 import ir.alijk.pedarshenas.events.*;
 import ir.jeykey.megacore.MegaPlugin;
 import ir.jeykey.megacore.utils.Common;
@@ -19,9 +19,13 @@ import java.sql.SQLException;
 import java.util.HashMap;
 
 public final class PedarShenasSpigot extends MegaPlugin {
-    @Getter @Setter private static Dao<AtomPlayer,String> atomPlayersDao;
-    @Getter private static final HashMap<Player, AtomPlayer> atomPlayers = new HashMap<>();
-    @Getter private static IPRecordManager recordManager;
+    @Getter
+    private static final HashMap<Player, AtomPlayer> atomPlayers = new HashMap<>();
+    @Getter
+    @Setter
+    private static Dao<AtomPlayer, String> atomPlayersDao;
+    @Getter
+    private static IPRecordManager recordManager;
 
     @Override
     public void onPluginEnable() {

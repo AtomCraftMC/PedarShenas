@@ -9,8 +9,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public class IPRecordManager {
-    @Getter private final HashMap<String, IPRecord> activeRecords = new HashMap<>();
-    @Getter private final HashMap<String, IPRecord> limitedRecords = new HashMap<>();
+    @Getter
+    private final HashMap<String, IPRecord> activeRecords = new HashMap<>();
+    @Getter
+    private final HashMap<String, IPRecord> limitedRecords = new HashMap<>();
 
     public IPRecordManager() {
         Bukkit.getScheduler().runTaskTimerAsynchronously(PedarShenasSpigot.getInstance(), () -> {
@@ -27,6 +29,7 @@ public class IPRecordManager {
 
     /**
      * Add new record for  an ip address
+     *
      * @param address The ip address of the client
      * @return Will return if the address is allowed for another record or not
      */
@@ -54,6 +57,7 @@ public class IPRecordManager {
 
     /**
      * Will return user cooldown by ip address
+     *
      * @param address User ip address in string
      * @return Cooldown of the address (we'll be 0 is the address is not limited)
      */
